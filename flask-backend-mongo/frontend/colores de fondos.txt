@@ -1,0 +1,8 @@
+los colores esta en codigo hexageximal 
+color de fondo base verde tema oscuro #026937
+color tanto de  botones como de recibidores de texto #0E7774 
+color de texto negro
+color de fondo base azul tema claro azul #0E7774
+color tanto de  botones como de recibidores de texto #3EBDAC
+color de texto blanco
+no es necesario que se pueda elegir un tema o otro,escoge el tema que creas mas conveniente para la app

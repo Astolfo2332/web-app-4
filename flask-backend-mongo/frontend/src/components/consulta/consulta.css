@@ -1,0 +1,71 @@
+.consulta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    }
+.button {
+  margin: 30px;
+  padding: 10px;
+  width: 50%;
+  background-color: #003600;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+.contenedorTotal{
+  width: 80%;
+}
+
+      .button-defaults{
+        padding: 0;
+        margin: 0;
+      }
+
+      .icono {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 50%;
+        background:#0E7774;
+        padding:12px;
+        border-radius:10px;
+        width: 80%;
+
+
+      }
+      .error-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        align-items: center;
+  justify-content: center;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        background-color: #f44336;
+        color: white;
+        border-radius: 5px;
+        z-index: 999;
+      }
+
+      .info-box {
+        width: 50%;
+        height: 50%;
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        transform: translate(-40%, -50%);
+        padding: 10px;
+        background-color: #0E7774;
+        color: white;
+        border-radius: 5px;
+        z-index: 999;
+      }
+iframe {
+  align-items: center;
+  width:100%;
+  height: 80%;;
+
+}

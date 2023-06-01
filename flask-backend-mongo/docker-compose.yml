@@ -4,7 +4,7 @@ services:
         build:
             context: .
             dockerfile: ./Dockerfile
-        image: repo/movies-backend:1
+        image: lsa:1
         working_dir: /opt/api/
         command: bash run.sh
         ports:
@@ -27,8 +27,8 @@ services:
             - 27017:27017
         env_file:
             - ./.env
-        #volumes:
-        #    - ./data/mongo:/data/db
+        volumes:
+           - ./data/mongo:/data/db.json
     node:
         image: node:latest
         volumes:

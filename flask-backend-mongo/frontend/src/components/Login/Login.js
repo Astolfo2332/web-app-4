@@ -1,80 +1,47 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../../contexts/UserContext";
-import { useHistory } from "react-router-dom";
-import "./Login.css";
+import { useState } from "react";
+import "./login.css"
 
-// async function login(credenciales) {
-//   return fetch("http://localhost:8080/login", {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(credenciales)
-//   }).then(response => response.json())
-// }
-
-async function login(credenciales) {
-  return {
-    name: "Andrés",
-    token: "12345",
-  };
+const user = {
+  id: '123',
+  email: 'test@mail.com',
+  password: '123456'
 }
 
-function Login() {
-  const { setUser } = useContext(UserContext);
+function Login({ setUser }) {
+  const IconoOscuro=require("../logos/iconoOscuro.PNG")
+  const [email, setEmail] = useState()
+  const [password, setPasword] = useState()
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  
 
-  const history = useHistory();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  function login() {
+    if (email === user.email && password === user.password) {
 
-    const userInfo = await login({
-      username,
-      password,
-    });
-    userInfo.isLoggedIn = true;
-
-    console.log(userInfo);
-    setUser(userInfo);
-    localStorage.setItem("user", JSON.stringify(userInfo));
-    history.push("/");
-  };
+      setUser(user)
+      localStorage.setItem('user', JSON.stringify(user))
+    }
+  }
 
   return (
-    <div className="d-flex justify-content-center">
-      <form className="text-white" onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Contraseña
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="exampleInputPassword1"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit" className="btn">
-          Iniciar sesión
-        </button>
-      </form>
+    <div className="login-form form">
+        <img src={IconoOscuro} alt="LdeSA"></img>
+      <div className="login-form box">
+      <h1 >Qué es LdeSA?</h1> 
+      <p>
+        Es un aplicativo que contiene un glosario sobre las diferentes señas utilizadas en diversas materias de programas ofrecidos por la Universidad de Antioquia, con el objetivo de sistematizar la lengua de señas académico colombiano para los estudiantes pertenecientes a la comunidad sordo-señante.
+      </p>
+      <p>
+        El estudiante podrá cargar un GIF realizando la seña de esa palabra en específica, junto con una pequeña descripción de su significado. El contenido podría ser compartido por los usuarios mediante este aplicativo.
+      </p>
+      </div>
+      <label  >Email</label>
+      <input  className=" login-form input" type="email" onChange={(e) => setEmail(e.target.value)} />
+      <label  >Password</label>
+      <input  className=" login-form input" type="password" onChange={(e) => setPasword(e.target.value)} />
+      <button className="login-form button" type="button" onClick={login}>Login</button>
     </div>
-  );
+  )
 }
 
 export default Login;

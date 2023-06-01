@@ -1,41 +1,38 @@
-import "./App.css";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
-import Layout from "./Layout";
-import Peliculas from "./components/Peliculas/Peliculas";
-import Pelicula from "./components/Pelicula/Pelicula";
-import Login from "./components/Login/Login";
-import GuardarPelicula from "./components/GuardarPelicula/GuardarPelicula";
-import { UserContext } from "./contexts/UserContext";
-import { useState } from "react";
+import './App.css';
+import Start from './components/start/Start'
+import { Routes, Route, useNavigate } from "react-router-dom"
+import Login from './components/login/login';
+import Header from './components/header/header';
+import { useEffect, useState } from 'react';
+import { AuthContext } from './contexto/authContext';
+import Agregar from "./components/agregar/agregar";
+import Consulta from "./components/consulta/consulta";
+import PalabraDetails from "./components/PalabraDetails/PalabraDetails"
 
 function App() {
-  const userStorage = JSON.parse(localStorage.getItem("user"));
-  const [user, setUser] = useState(
-    userStorage ? userStorage : { isLoggedIn: false }
-  );
+  const navigate = useNavigate()
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+  useEffect(() => {
+    if (!user) {
+      navigate('/login')
+    } else {
+      navigate('/')
+    }
+  }, [user])
+
+
 
   return (
-    <Router>
-      <UserContext.Provider value={{ user, setUser }}>
-        <Switch>
-          <Layout path="/peliculas">
-            <Peliculas />
-          </Layout>
-          <Layout path="/pelicula/:id">
-            <Pelicula />
-          </Layout>
-          <Layout path="/login">
-            <Login />
-          </Layout>
-          <Layout path="/guardar-pelicula/:id?">
-            <GuardarPelicula />
-          </Layout>
-          <Layout exact path="/">
-            <Peliculas />
-          </Layout>
-        </Switch>
-      </UserContext.Provider>
-    </Router>
+    <AuthContext.Provider value={user}>
+      <Header setUser={setUser}></Header>
+    <Routes>
+        <Route path="/" element={<Start />}></Route>
+        <Route path="/login" element={<Login setUser={setUser} />}></Route>
+        <Route path="/Consultar_Palabra" element={<Consulta  />}></Route>
+        <Route path="/Agregar_Palabra" element={<Agregar  />}></Route>
+        <Route path="Consultar_Palabra/:palabra_id" element={<PalabraDetails />}></Route>
+    </Routes>
+    </AuthContext.Provider>
   );
 }
 

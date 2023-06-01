@@ -7,77 +7,145 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/movies/<code>", methods=['GET'])
-def get_movie(code):
-    con = db.get_connection()
-    dbmov = con.dbmovies
-    try:
-        movies = dbmov.movies
-        response = app.response_class(
-            response=dumps(movies.find_one({'_id': ObjectId(code)})),
-            status=200,
-            mimetype='application/json'
-        )
-        return response
-    finally:
-        con.close()
-        print("Connection closed")
+@app.route("/LdeSA/<code>", methods=['GET']) 
 
-@app.route("/movies", methods=['GET'])
-def get_movies():
-    con = db.get_connection()
-    dbmov = con.dbmovies
-    try:
-        movies = dbmov.movies
-        response = app.response_class(
-            response=dumps(
-                movies.find()
-            ),
-            status=200,
-            mimetype='application/json'
-        )
-        return response
-    finally:
-        con.close()
-        print("Connection closed")
+def get_LdeSA(code): 
+    con =db.get_connection() 
+    dbLdeSA = con.dbLdeSA 
+    try: 
+        words = dbLdeSA.words 
+        response = app.response_class( 
 
-@app.route("/movies", methods=['POST'])
-def create():
-    data = request.get_json()
-    con = db.get_connection()
-    dbmov = con.dbmovies  
-    try:
-        movies = dbmov.movies
-        movies.insert_one(data)
-        return jsonify({"message":"OK"})
-    finally:
-        con.close()
-        print("Connection closed")
+            response=dumps(words.find_one({'_id': ObjectId(code)})), 
+            status=200,  mimetype='application/json'  ) 
+        return response 
+    finally: 
+        con.close() 
+        print("Connection closed") 
+@app.route("/LdeSA", methods=['GET']) 
 
-@app.route("/movies/<code>", methods=['PUT'])
-def update(code):
-    data = request.get_json()
-    con = db.get_connection()
-    dbmov = con.dbmovies
-    try:
-        movies = dbmov.movies
-        movies.replace_one(
-            {'_id': ObjectId(code)},
-            data, True
-        )
-        return jsonify({"message":"OK"})
-    finally:
-        con.close()
-        print("Connection closed")
+def get_LdeSA(): 
+    con = db.get_connection() 
+    dbLdeSA = con.dbLdeSA 
+    try: 
+        words = dbLdeSA.words 
+        response = app.response_class( 
+                    response=dumps( words.find() ), status=200,  mimetype='application/json' ) 
+        return response 
+    finally: 
+        con.close() 
+        print("Connection closed") 
+@app.route("/LdeSA ", methods=['POST']) 
 
-@app.route("/movies/<code>", methods=['DELETE'])
-def delete(code):
-    con = db.get_connection()
-    dbmov = con.dbmovies
-    try:
-        movies = dbmov.movies
-        movies.delete_one({'_id': ObjectId(code)})
-        return jsonify({"message":"OK"})
-    finally:
-        con.close()
-        print("Connection closed")
+def create(): 
+    data = request.get_json() 
+    con = db.get_connection() 
+    dbLdeSA = con.dbLdeSA 
+    try: 
+        words = dbLdeSA.words
+        words.insert_one(data) 
+        return jsonify({"message":"OK"}) 
+    finally: 
+        con.close() 
+        print("Connection closed") 
+
+@app.route("/LdeSA/<code>", methods=['PUT']) 
+
+def update(code): 
+    data = request.get_json() 
+    con = db.get_connection() 
+    dbLdeSA = con.dbLdeSA 
+    try: 
+        words = dbLdeSA.words 
+        words.replace_one( {'_id': ObjectId(code)}, data, True ) 
+        return jsonify({"message":"OK"}) 
+    finally: 
+        con.close() 
+        print("Connection closed") 
+
+@app.route("/LdeSA/<code>", methods=['DELETE']) 
+def delete(code): 
+    con = db.get_connection() 
+    dbLdeSA = con.dbLdeSA 
+    try: 
+        words = dbLdeSA.words 
+        words.delete_one({'_id': ObjectId(code)}) 
+        return jsonify({"message":"OK"}) 
+
+    finally: 
+        con.close() 
+        print("Connection closed") 
+
+@app.route("/subjects/<code>", methods=['GET']) 
+def get_subjects (code): 
+    con = db.get_connection() 
+    dbLdeSA = con.dbLdeSA 
+    try: 
+        subjects = dbLdeSA.subjects 
+        response = app.response_class( 
+            response=dumps(subjects.find_one({'_id': ObjectId(code)})), 
+            status=200, 
+            mimetype='application/json' 
+        ) 
+        return response 
+    finally: 
+        con.close() 
+        print("Connection closed") 
+
+@app.route("/subjects", methods=['GET']) 
+def get_subjects(): 
+    con = db.get_connection() 
+    dbLdeSA = con.dbLdeSA 
+    try: 
+        subjects = dbLdeSA.subjects 
+        response = app.response_class( 
+                    response=dumps( 
+                        subjects.find() 
+                    ), 
+                    status=200, 
+                    mimetype='application/json' 
+                ) 
+        return response 
+    finally: 
+        con.close() 
+        print("Connection closed") 
+
+@app.route("/subjects", methods=['POST']) 
+
+def create_subjects (): 
+    data = request.get_json() 
+    con = db.get_connection() 
+    dbLdeSA = con.dbLdeSA 
+    try: 
+        subjects= dbLdeSA.subjects 
+        subjects.insert_one(data) 
+        return jsonify({"message":"OK"}) 
+    finally: 
+        con.close() 
+        print("Connection closed") 
+@app.route("/subjects/<code>", methods=['PUT']) 
+def update_subjects (code): 
+    data = request.get_json() 
+    con = db.get_connection() 
+    dbLdeSA = con.dbLdeSA 
+    try: 
+        subjects= dbLdeSA.subjects 
+        subjects.replace_one( 
+            {'_id': ObjectId(code)}, 
+            data, True 
+        ) 
+        return jsonify({"message":"OK"}) 
+    finally: 
+        con.close() 
+        print("Connection closed") 
+@app.route("/subjects/<code>", methods=['DELETE']) 
+def delete_subjects (code): 
+    con = db.get_connection() 
+    dbLdeSA = con.dbLdeSA 
+    try: 
+        subjects= dbLdeSA.subjects 
+        subjects.delete_one({'_id': ObjectId(code)}) 
+        return jsonify({"message":"OK"}) 
+    finally: 
+        con.close() 
+        print("Connection closed") 
