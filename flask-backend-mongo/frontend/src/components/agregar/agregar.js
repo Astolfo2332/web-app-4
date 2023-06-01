@@ -2,7 +2,7 @@ import "./agregar.css"
 import { useNavigate } from "react-router-dom"
 import { useState ,useEffect} from 'react'
 import { uuidv4 } from '../utils/uuid'
-
+import configData from "../../config.json";
 
 
 
@@ -18,7 +18,7 @@ function Agregar(){
   const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
-        fetch('http://localhost:3000/Palabras')
+        fetch(`${configData.SERVER_URL}/Palabras`)
           .then((response) => response.json())
           .then((data) => {
             setDatosPalabra(data)

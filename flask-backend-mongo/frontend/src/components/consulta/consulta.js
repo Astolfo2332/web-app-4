@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom"
 import Palabra from "../palabra/palabra.js";
 import {embedYouTubeUrl} from "../utils/yt"
-
+import configData from "../../config.json";
 
 function Consulta(){
 
@@ -15,7 +15,7 @@ const [showError, setShowError] = useState(false);
 const navigate = useNavigate()
 
 useEffect(() => {
-  fetch('http://localhost:3000/Palabras')
+  fetch(`${configData.SERVER_URL}/Palabras`)
     .then((response) => response.json())
     .then((data) => {
       setLisraPalabras(data)
@@ -30,7 +30,7 @@ function volver_menu(){
 
 async function buscarPalabra() {
   try{
-  const respuesta = await fetch('http://localhost:3000/Palabras');
+  const respuesta = await fetch(`${configData.SERVER_URL}/Palabras`);
   const data = await respuesta.json();
   var palabrasEncontradas = data.find(
     (objetoPalabra) => objetoPalabra.Palabra.toLocaleLowerCase() === palabraBuscar.toLocaleLowerCase()
