@@ -28,7 +28,7 @@ services:
         env_file:
             - ./.env
         volumes:
-           - ./data/mongo:/data/db.json
+           - ./data/mongo:/data/db
     node:
         image: node:latest
         volumes:
