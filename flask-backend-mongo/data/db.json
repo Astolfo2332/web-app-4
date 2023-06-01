@@ -1,7 +1,7 @@
 {
   "Palabras": [
     {
-      "id": "642d9be6a0c5d37bdf42eb8d",
+      
       "Descripcion": "descripcion del barroco ",
       "Palabra": "Barroco",
       "video": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -24,7 +24,7 @@
       }
     },
     {
-      "id": "642d9ff2a0c5d37bdf42eba5",
+      
       "Descripcion": "definicion de integral ",
       "Palabra": "Integral",
       "video": "https://www.youtube.com/watch?v=UzYgNZlKA4k&list=PLyvsggKtwbLVva0XXvoqx91iaLmhgeNy7&index=2",
@@ -47,7 +47,7 @@
       }
     },
     {
-      "id": "642da08ca0c5d37bdf42eba6",
+      
       "Descripcion": "descripcion de resistencia ",
       "Palabra": "Resistencia",
       "video": "https://www.youtube.com/watch?v=4dKuDEWEAmo&list=PLyvsggKtwbLVva0XXvoqx91iaLmhgeNy7&index=3",
@@ -70,7 +70,6 @@
       }
     },
     {
-      "id": "642da287a0c5d37bdf42ebc0",
       "Descripcion": "descripcion del transistor ",
       "Palabra": "Transistor",
       "video": "https://www.youtube.com/watch?v=4dKuDEWEAmo&list=PLyvsggKtwbLVva0XXvoqx91iaLmhgeNy7&index=3",
@@ -93,7 +92,6 @@
       }
     },
     {
-      "id": "642dcc660164646de827a193",
       "Descripcion": "descripcion de la dos resistencia",
       "Palabra": "Resistencia",
       "video": "https://www.youtube.com/watch?v=4dKuDEWEAmo&list=PLyvsggKtwbLVva0XXvoqx91iaLmhgeNy7&index=3",
